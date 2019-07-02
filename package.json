@@ -23,7 +23,7 @@
     "setupFiles": [
       "./test/setup.js"
     ],
-    "testURL": "http://localhost:8080",
+    "testURL": "http://localhost:8081",
     "moduleFileExtensions": [
       "js",
       "jsx"
