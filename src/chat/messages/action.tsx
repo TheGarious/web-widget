@@ -9,7 +9,7 @@ export default class Action extends MessageType {
         const message = props.message;
 
         const buttons = message.actions.map((action: IAction) => {
-            return <div class="btn" onClick={() => this.performAction(action)}>
+            return <div class="btn" onClick={() => this.handleClick(action)}>
                 {action.text}
             </div>;
         });
@@ -24,6 +24,20 @@ export default class Action extends MessageType {
         );
     }
 
+    showMessage(action: IAction) {
+        botman.callAPI(action.value, true, null, (msg: IMessage) => {
+            this.props.messageHandler({
+                text: action.text,
+                type: msg.type,
+                timeout: msg.timeout,
+                actions: null,
+                attachment: null,
+                additionalParameters: null,
+                from: 'visitor'
+            });
+        }, null);
+    }
+    
     performAction(action: IAction) {
         botman.callAPI(action.value, true, null, (msg: IMessage) => {
             this.setState({attachmentsVisible : false });
@@ -37,5 +51,13 @@ export default class Action extends MessageType {
                 from: 'chatbot'
             });
         }, null);
+        
     }
+
+    handleClick(action: IAction){
+        this.showMessage(action);
+        this.performAction(action);
+    }
+
+    
 }
