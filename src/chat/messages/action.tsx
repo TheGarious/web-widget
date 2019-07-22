@@ -25,17 +25,14 @@ export default class Action extends MessageType {
     }
 
     showMessage(action: IAction) {
-        botman.callAPI(action.value, true, null, (msg: IMessage) => {
-            this.props.messageHandler({
-                text: action.text,
-                type: msg.type,
-                timeout: msg.timeout,
-                actions: null,
-                attachment: null,
-                additionalParameters: null,
-                from: 'visitor'
-            });
-        }, null);
+        this.props.messageHandler({
+            text: action.text,
+            type: 'text',
+            actions: null,
+            attachment: null,
+            additionalParameters: null,
+            from: 'visitor'
+        });
     }
     
     performAction(action: IAction) {
