@@ -97,7 +97,8 @@ export default class Widget extends Component<any, IWidgetState> {
                             <div style={{background: conf.mainColor, ...desktopTitleStyle}} onClick={this.toggle}>
                                 <div style={{
                                     display: 'flex', alignItems: 'center', padding: '0px 30px 0px 0px',
-                                    fontSize: '15px', fontWeight: 'normal', color: conf.headerTextColor
+                                    fontSize: '15px', fontWeight: 'normal', color: conf.headerTextColor,
+                                    justifyContent: 'center', width: '100%'
                                 }}>
                                     {conf.title}
                                 </div>

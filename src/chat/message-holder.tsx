@@ -58,6 +58,7 @@ export default class MessageHolder extends Component<IMessageHolderProps, any> {
 
         return (
             <li data-message-id={message.id} class={message.from} style={styles}>
+                <div class="author" style={{ display: message.from == 'chatbot'? 'block' : 'none'}}>{message.from}</div>
                 <div class="msg">
                     <MessageComponent onVisibilityChange={this.messageVisibilityChange}
                                       message={message}
